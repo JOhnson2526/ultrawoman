@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultraman观察日记：全网最全"非官方"档案库</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            background-image: 
+                radial-gradient(#09e5c0 1px, transparent 1px),
+                radial-gradient(#fd0101 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: #faf4f5;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .btn-bgm {
+            background-color: white;
+            color: #ff8fab;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-bgm:hover {
+            transform: scale(1.05);
+            background-color: #ffe0e6;
+        }
+
+        /* 首页样式 */
+        .section-home {
+            background-color: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .warning-banner {
+            background-color: #ffd60a;
+            color: #333;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+            color: #d32f2f;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
+        .profile-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .icon-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .icon-group i {
+            color: #82b1ff;
+            transition: all 0.3s ease;
+        }
+
+        .icon-group i:hover {
+            transform: scale(1.2) rotate(10deg);
+            color: #448aff;
+        }
+
+        .observation-report {
+            background-color: #e3f2fd;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .observation-report h2 {
+            color: #1565c0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .observation-report p {
+            font-size: 1.2rem;
+            color: #333;
+            font-style: italic;
+        }
+
+        /* 档案卡样式 */
+        .section-profile {
+            background-color: #fff9c4;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-profile h2 {
+            color: #f57c00;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .profile-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-card table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .profile-card tr {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .profile-card tr:last-child {
+            border-bottom: none;
+        }
+
+        .profile-card td {
+            padding: 1.5rem;
+            vertical-align: top;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #666;
+            width: 30%;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        .profile-card ul {
+            list-style: none;
+        }
+
+        .profile-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .profile-card li i {
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+        }
+
+        .status-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .status-item {
+            position: relative;
+            height: 2rem;
+            background-color: #f0f0f0;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .status-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #81c784;
+            transition: width 1s ease;
+        }
+
+        .status-item span {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+        }
+
+        /* 语录生成器样式 */
+        .section-quote {
+            background-color: #e8f5e9;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-quote h2 {
+            color: #2e7d32;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .quote-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .quote-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .class-btn {
+            background-color: #42a5f5;
+        }
+
+        .food-btn {
+            background-color: #ff7043;
+        }
+
+        .relax-btn {
+            background-color: #ba68c8;
+        }
+
+        .quote-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .quote-display {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .cartoon-avatar {
+            background-color: #ffccbc;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #d84315;
+        }
+
+        .quote-bubble {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .quote-bubble::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 15px 20px 15px 0;
+            border-color: transparent white transparent transparent;
+        }
+
+        .custom-quote {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .custom-quote h3 {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .custom-quote p {
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-quote textarea {
+            width: 100%;
+            max-width: 600px;
+            height: 100px;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            resize: none;
+            margin-bottom: 1rem;
+        }
+
+        .submit-btn {
+            padding: 0.8rem 2rem;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* 游戏区域样式 */
+        .section-games {
+            background-color: #e3f2fd;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-games h2 {
+            color: #1565c0;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .game {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .game:last-child {
+            margin-bottom: 0;
+        }
+
+        .game h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .game-story {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .game-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .game-btn {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #90caf9;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .game-btn:hover {
+            background-color: #64b5f6;
+            transform: scale(1.02);
+        }
+
+        .game-result {
+            background-color: #fff8e1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+            min-height: 60px;
+        }
+
+        /* 留言板样式 */
+        .section-guestbook {
+            background-color: #fce4ec;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-guestbook h2 {
+            color: #c2185b;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .guestbook-tip {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .guestbook-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .guestbook-form textarea {
+            width: 100%;
+            max-width: 600px;
+            height: 120px;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            resize: none;
+            margin-bottom: 1rem;
+        }
+
+        .admin-tip {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .guestbook-messages {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .message-sticky {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+            transform: rotate(-1deg);
+            transition: all 0.3s ease;
+        }
+
+        .message-sticky:nth-child(even) {
+            transform: rotate(1deg);
+            background-color: #fff9c4;
+        }
+
+        .message-sticky:nth-child(3n) {
+            transform: rotate(-0.5deg);
+            background-color: #e8f5e9;
+        }
+
+        .message-sticky:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .message-sticky p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .message-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: #ff5252;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .like-btn:hover {
+            transform: scale(1.2);
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .disclaimer {
+            background-color: #444;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .disclaimer h3 {
+            margin-bottom: 1rem;
+            color: #ffd54f;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .quote-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quote-btn {
+                width: 80%;
+            }
+            
+            .game-options {
+                flex-direction: column;
+            }
+            
+            .game-btn {
+                width: 100%;
+            }
+            
+            .quote-display {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quote-bubble::before {
+                left: 50%;
+                top: -30px;
+                transform: translateX(-50%);
+                border-width: 0 15px 20px 15px;
+                border-color: transparent transparent white transparent;
+            }
+        }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- 音频背景（默认不自动播放，用户点击后播放） -->
+    <audio id="bgm" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 顶部导航 -->
+    <nav>
+        <div class="container">
+            <h1><i class="fas fa-book-open"></i> 凹凸曼观察日记</h1>
+            <div class="nav-links">
+                <a href="#home"><i class="fas fa-home"></i> 首页</a>
+                <a href="#profile"><i class="fas fa-id-card"></i> 档案卡</a>
+                <a href="#quote-generator"><i class="fas fa-comment-dots"></i> 语录生成器</a>
+                <a href="#games"><i class="fas fa-gamepad"></i> 趣味小游戏</a>
+                <a href="#guestbook"><i class="fas fa-sticky-note"></i> 留言板</a>
+            </div>
+            <button id="bgm-toggle" class="btn-bgm"><i class="fas fa-volume-mute"></i> BGM</button>
+        </div>
+    </nav>
+
+    <!-- 首页区域 -->
+    <section id="home" class="section-home">
+        <div class="container">
+            <div class="warning-banner">
+                <span class="blink">警告！</span> 本档案含大量凹凸曼的"黑历史"（伪），阅读前请做好笑到肚子痛的准备！
+            </div>
+            
+            <div class="profile-icons">
+                <div class="icon-group">
+                    <i class="fas fa-utensils fa-3x"></i>
+                    <i class="fas fa-headphones fa-3x"></i>
+                    <i class="fas fa-book fa-3x"></i>
+                </div>
+                <div class="icon-group">
+                    <i class="fas fa-question-circle fa-3x"></i>
+                    <i class="fas fa-smile fa-3x"></i>
+                </div>
+            </div>
+            
+            <div class="observation-report">
+                <h2>今日观察报告</h2>
+                <p id="daily-report">正在加载最新观察记录...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 档案卡区域 -->
+    <section id="profile" class="section-profile">
+        <div class="container">
+            <h2><i class="fas fa-id-card"></i> Ultraman"官方"档案卡</h2>
+            <div class="profile-card">
+                <table>
+                    <tr>
+                        <td class="label"><i class="fas fa-signature"></i> 姓名</td>
+                        <td class="content"><span class="highlight">凹凸曼（江湖人称"贱人"）</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><i class="fas fa-user-secret"></i> 代号</td>
+                        <td class="content"><span class="highlight">Ultrawoman</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><i class="fas fa-star"></i> 核心技能</td>
+                        <td class="content">
+                            <ul>
+                                <li><i class="fas fa-gem"></i> 屁股接触到椅子立即发声</li>
+                                <li><i class="fas fa-lightbulb"></i> 走神时能精准接住老师的茬</li>
+                                <li><i class="fas fa-laugh-beam"></i> 用拍子解决一切</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><i class="fas fa-virus"></i> 弱点</td>
+                        <td class="content">
+                            <ul>
+                                <li><i class="fas fa-gamepad"></i> 被老师叫起来时会被封印</li>
+                                <li><i class="fas fa-scratch"></i> 被点名回答问题时会"战术眼瞎"</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><i class="fas fa-heartbeat"></i> 日常状态</td>
+                        <td class="content">
+                            <div class="status-bar">
+                                <div class="status-item">
+                                    <div class="status-fill" style="width: 80%;"></div>
+                                    <span>80%时间：找茬</span>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-fill" style="width: 15%;"></div>
+                                    <span>15%时间：假装认真做题（实则使用AI)</span>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-fill" style="width: 5%;"></div>
+                                    <span>5%时间：突然认真写作业（因为要交了）</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 语录生成器区域 -->
+    <section id="quote-generator" class="section-quote">
+        <div class="container">
+            <h2><i class="fas fa-comment-dots"></i> 凹凸曼语录生成器</h2>
+            <div class="quote-buttons">
+                <button class="quote-btn class-btn">
+                    <i class="fas fa-school"></i> 课堂版
+                </button>
+                <button class="quote-btn food-btn">
+                    <i class="fas fa-utensils"></i> 干饭版
+                </button>
+                <button class="quote-btn relax-btn">
+                    <i class="fas fa-couch"></i> 摸鱼版
+                </button>
+            </div>
+            <div class="quote-display">
+                <div class="cartoon-avatar">
+                    <div class="avatar-circle">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="quote-bubble" id="quote-bubble">
+                    点击上方按钮生成凹凸曼的语录！
+                </div>
+            </div>
+            <div class="custom-quote">
+                <h3>自定义语录</h3>
+                <p>想添加你眼中的凹凸曼语录？提交后等待审核通过即可加入生成池！</p>
+                <textarea id="custom-quote-input" placeholder="请输入模仿凹凸曼的搞笑语录..."></textarea>
+                <button id="submit-custom-quote" class="submit-btn">提交语录</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 趣味小游戏区域 -->
+    <section id="games" class="section-games">
+        <div class="container">
+            <h2><i class="fas fa-gamepad"></i> "拯救"凹凸曼趣味小游戏</h2>
+            
+            <!-- 游戏1：帮凹凸woman选找茬对象 -->
+            <div class="game">
+                <h3>游戏1：帮凹凸woman选找茬对象</h3>
+                <div class="game-story">凹凸woman下课冲出教室，面对3个找茬对象，他该选哪个？</div>
+                <div class="game-options">
+                    <button class="game-btn" data-game="lunch" data-option="1">
+                        <i class="fas fa-utensils"></i> 选Duncan
+                    </button>
+                    <button class="game-btn" data-game="lunch" data-option="2">
+                        <i class="fas fa-pepper-hot"></i> 选老师
+                    </button>
+                    <button class="game-btn" data-game="lunch" data-option="3">
+                        <i class="fas fa-hamburger"></i> 选Elsa S
+                    </button>
+                </div>
+                <div class="game-result" id="lunch-result"></div>
+            </div>
+            
+            <!-- 游戏2：凹凸woman的课堂危机 -->
+            <div class="game">
+                <h3>游戏2：凹凸woman的课堂危机</h3>
+                <div class="game-story">老师突然点名让凹凸woman回答问题，他该怎么办？</div>
+                <div class="game-options">
+                    <button class="game-btn" data-game="class" data-option="1">
+                        <i class="fas fa-honest"></i> 瞎蒙一个                    </button>
+                    <button class="game-btn" data-game="class" data-option="2">
+                        <i class="fas fa-random"></i> 站在原地"嗯"五分钟
+                    </button>
+                    <button class="game-btn" data-game="class" data-option="3">
+                        <i class="fas fa-user-friends"></i> 问同桌
+                    </button>
+                </div>
+                <div class="game-result" id="class-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 留言板区域 -->
+    <section id="guestbook" class="section-guestbook">
+        <div class="container">
+            <h2><i class="fas fa-sticky-note"></i> 同学"吐槽"留言板</h2>
+            <p class="guestbook-tip">请用友好的方式分享你眼中的Fay <i class="fas fa-heart"></i></p>
+            
+            <div class="guestbook-form">
+                <textarea id="guestbook-input" placeholder="写下你想对Fay说的话..."></textarea>
+                <button id="submit-guestbook" class="submit-btn">提交留言</button>
+                <p class="admin-tip"><i class="fas fa-shield-alt"></i> 所有留言需通过管理员审核后显示</p>
+            </div>
+            
+            <div class="guestbook-messages" id="guestbook-messages">
+                <!-- 示例留言 -->
+                <div class="message-sticky">
+                    <p>凹凸woman每次答不出题的样子，狼狈极了！</p>
+                    <div class="message-footer">
+                        <span>Johnson</span>
+                        <button class="like-btn"><i class="far fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="message-sticky">
+                    <p>上次凹凸woman用表情包跟老师请假，居然失败了成功了，太蠢了！</p>
+                    <div class="message-footer">
+                        <span>隔壁桌的小明</span>
+                        <button class="like-btn"><i class="far fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="message-sticky">
+                    <p>凹凸woman的找茬技术真的太厉害了，什么时候能带我一起？</p>
+                    <div class="message-footer">
+                        <span>找茬新手</span>
+                        <button class="like-btn"><i class="far fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚区域 -->
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <h3>免责声明</h3>
+                <p>本网站纯属同学间的玩笑</p>
+            </div>
+            <div class="copyright">
+                © 2024 Fay观察日记 - 非官方档案库 | 设计与开发：Johnson
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 每日观察报告数据
+            const observationReports = [
+                "2024.10.10 观察记录：凹凸woman每天都要嗯上几分钟",
+                "2024.10.09 紧急通知：凹凸woman在美术课上玩真心话大冒险被罚了一周detention",
+                "2024.10.08 突发状况：凹凸woman使用AI做题被发现需要重新做作业"
+            ];
+
+            // 语录数据
+            const quotes = {
+                class: [
+                    "完了完了，老师刚才讲的是第几页？",
+                    "这个知识点看起来好难，要不先记个关键词——'不会'",
+                    "老师什么时候能讲完啊，我想看MC直播了",
+                    "同桌，刚才老师说的什么？我好像走神了",
+                    "这个问题好像在MC里遇到过类似的情况",
+                    "笔记什么的，回头借我抄抄呗？"
+                ],
+                food: [
+                    "今天食堂的糖醋里脊，我愿称之为'天花板'！",
+                    "我不想做作业啊",
+                    "有没有人一起拼零食？我只要一包薯片！",
+                    "这个蛋糕看起来好好吃，要不...先吃一口再写作业？",
+                    "奶茶是续命神器，没有奶茶的下午是不完整的",
+                    "我决定了，今晚要吃遍学校周边的小吃！"
+                ],
+                relax: [
+                    "这个视频好搞笑，偷偷再看30秒就写作业",
+                    "有没有人一起拼零食？我只要一包薯片！",
+                    "好累啊，要不先玩把MC放松一下？",
+                    "这个表情包太适合发给老师了，不过我不敢",
+                    "为什么周末过得这么快，我还没玩够呢",
+                    "作业什么的，明天再说吧，先看会儿MC视频"
+                ]
+            };
+
+            // 游戏结果数据
+            const gameResults = {
+                lunch: {
+                    1: "凹凸woman跟Duncan找茬被揍死了",
+                    2: "凹凸woman跟老师找茬被罚了detention",
+                    3: "凹凸woman跟Elsa S找茬被骂了一顿并被告了老师"
+                },
+                class: {
+                    1: "蒙错了，被老师骂了一句'上课吃屎呢?'  ",
+                    2: "老师说'滚下去!'",
+                    3: "同桌传话被发现了，老师叫他罚站"
+                }
+            };
+
+            // 初始化每日观察报告
+            const dailyReportElement = document.getElementById('daily-report');
+            if (dailyReportElement) {
+                const randomReport = observationReports[Math.floor(Math.random() * observationReports.length)];
+                dailyReportElement.textContent = randomReport;
+            }
+
+            // BGM控制
+            const bgm = document.getElementById('bgm');
+            const bgmToggle = document.getElementById('bgm-toggle');
+            
+            if (bgmToggle && bgm) {
+                bgmToggle.addEventListener('click', function() {
+                    if (bgm.paused) {
+                        bgm.play().catch(err => {
+                            console.log('自动播放被浏览器阻止，请手动点击播放');
+                        });
+                        bgmToggle.innerHTML = '<i class="fas fa-volume-up"></i> BGM';
+                    } else {
+                        bgm.pause();
+                        bgmToggle.innerHTML = '<i class="fas fa-volume-mute"></i> BGM';
+                    }
+                });
+            }
+
+            // 语录生成器功能
+            const quoteBubble = document.getElementById('quote-bubble');
+            const classBtn = document.querySelector('.class-btn');
+            const foodBtn = document.querySelector('.food-btn');
+            const relaxBtn = document.querySelector('.relax-btn');
+            
+            function generateQuote(type) {
+                if (quoteBubble && quotes[type]) {
+                    const randomQuote = quotes[type][Math.floor(Math.random() * quotes[type].length)];
+                    
+                    // 添加动画效果
+                    quoteBubble.style.opacity = '0';
+                    setTimeout(() => {
+                        quoteBubble.textContent = randomQuote;
+                        quoteBubble.style.opacity = '1';
+                    }, 300);
+                }
+            }
+
+            if (classBtn) classBtn.addEventListener('click', () => generateQuote('class'));
+            if (foodBtn) foodBtn.addEventListener('click', () => generateQuote('food'));
+            if (relaxBtn) relaxBtn.addEventListener('click', () => generateQuote('relax'));
+
+            // 自定义语录提交
+            const customQuoteInput = document.getElementById('custom-quote-input');
+            const submitCustomQuote = document.getElementById('submit-custom-quote');
+            
+            if (submitCustomQuote && customQuoteInput) {
+                submitCustomQuote.addEventListener('click', function() {
+                    const quoteText = customQuoteInput.value.trim();
+                    if (quoteText) {
+                        alert('感谢你的提交！你的语录将在审核通过后加入生成池～');
+                        customQuoteInput.value = '';
+                        // 实际应用中这里会发送到服务器存储
+                    } else {
+                        alert('请输入有效的语录内容！');
+                    }
+                });
+            }
+
+            // 小游戏功能
+            const gameBtns = document.querySelectorAll('.game-btn');
+            
+            gameBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const game = this.getAttribute('data-game');
+                    const option = this.getAttribute('data-option');
+                    const resultElement = document.getElementById(`${game}-result`);
+                    
+                    if (resultElement && gameResults[game] && gameResults[game][option]) {
+                        // 添加动画效果
+                        resultElement.style.opacity = '0';
+                        setTimeout(() => {
+                            resultElement.textContent = gameResults[game][option];
+                            resultElement.style.opacity = '1';
+                        }, 300);
+                    }
+                });
+            });
+
+            // 留言板功能
+            const guestbookInput = document.getElementById('guestbook-input');
+            const submitGuestbook = document.getElementById('submit-guestbook');
+            const guestbookMessages = document.getElementById('guestbook-messages');
+            
+            if (submitGuestbook && guestbookInput && guestbookMessages) {
+                submitGuestbook.addEventListener('click', function() {
+                    const messageText = guestbookInput.value.trim();
+                    if (messageText) {
+                        alert('感谢你的留言！你的留言将在审核通过后显示～');
+                        guestbookInput.value = '';
+                        // 实际应用中这里会发送到服务器存储
+                    } else {
+                        alert('请输入有效的留言内容！');
+                    }
+                });
+            }
+
+            // 点赞功能
+            const likeBtns = document.querySelectorAll('.like-btn');
+            
+            likeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        icon.style.color = '#ff5252';
+                        // 添加点赞动画
+                        this.style.transform = 'scale(1.3)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 200);
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        icon.style.color = '#ff5252';
+                    }
+                });
+            });
+
+            // 平滑滚动效果
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // 减去导航栏高度
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 状态栏动画效果
+            const statusFills = document.querySelectorAll('.status-fill');
+            
+            // 当元素进入视口时触发动画
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 已经在CSS中设置了transition，这里只需要确保元素可见
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            statusFills.forEach(fill => {
+                observer.observe(fill);
+            });
+
+            // 添加页面加载动画
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
